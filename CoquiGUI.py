@@ -6,9 +6,11 @@ from tkinter import filedialog
 from playsound import playsound
 import os
 
+app_directory = os.path.dirname(__file__)
+
 # Sythesize text to speech with CoquiTTS.
 def synthesize():
-    playsound('Sounds/minecraft-click-cropped.mp3')
+    playsound('%s/Sounds/minecraft-click-cropped.mp3'%(app_directory))
     file_path = filedialog.askdirectory()
     file_name = "default"
     text_tts = text_entry.get(1.0, "end-1c")
@@ -18,7 +20,7 @@ def synthesize():
     os.system('echo "Running CoquiTTS!"')
     os.system('echo '+cmd)
     os.system(cmd)
-    playsound('Sounds/jobs_done.mp3')
+    playsound('%s/Sounds/jobs_done.mp3'%(app_directory))
     pass
 
 # App settings.
