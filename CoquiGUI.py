@@ -4,6 +4,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
 import os
+import playsound
 
 # Sythesize text to speech with CoquiTTS.
 def synthesize():
@@ -23,7 +24,7 @@ def settings_screen():
     global file_name
 
     settings_window = Toplevel()
-    settings_window.geometry("400x400")
+    settings_window.geometry("400x500")
     settings_rframe = Frame(settings_window)
     settings_rframe.pack(side=LEFT)
 
