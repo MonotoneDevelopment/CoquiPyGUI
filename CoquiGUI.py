@@ -8,6 +8,7 @@ import playsound
 
 # Sythesize text to speech with CoquiTTS.
 def synthesize():
+    playsound('Sounds/minecraft-click-cropped.mp3')
     file_path = filedialog.askdirectory()
     file_name = "default"
     text_tts = text_entry.get(1.0, "end-1c")
@@ -17,6 +18,7 @@ def synthesize():
     os.system('echo "Running CoquiTTS!"')
     os.system('echo '+cmd)
     os.system(cmd)
+    playsound('Sounds/jobs_done.mp3')
     pass
 
 # App settings.
@@ -42,12 +44,12 @@ def choose_voice():
 # The About Screen.
 def about_screen():
     about_window = Toplevel()
-    about_window.geometry("200x100")
+    about_window.geometry("200x200")
 
-    about_version = Label(about_window, text="CoquiGUI v0.0.1")
+    about_version = Label(about_window, text="CoquiGUI v0.1.0")
     about_version.pack()
 
-    about_text = Label(about_window, text="I wanted a GUI frontend to CoquiTTS but there weren't any so I decided to make my own.", wraplength=150)
+    about_text = Label(about_window, text="I wanted a GUI frontend to CoquiTTS but I couldn't really find any, so I decided to make my own.", wraplength=170)
     about_text.pack()
     pass
 
@@ -57,7 +59,7 @@ root.geometry("400x400")
 frame = Frame(root)
 frame.pack()
 
-# Add menubar.
+# Add menubar. Cascades used for compatibility with MacOS.
 menubar = Menu(root, tearoff=0)
 filemenu = Menu(menubar)
 menubar.add_cascade(label="CoquiGUI", menu=filemenu)
@@ -72,7 +74,7 @@ label = Label(frame, text="GUI interface for CoquiTTS.")
 label.pack(pady=10)
 
 # Text entry.
-text_entry = Text(frame, width= 40, height= 20, wrap=WORD)
+text_entry = Text(frame, width= 40, height= 15, wrap=WORD)
 text_entry.pack(pady=20)
 
 # Sythesize button.
