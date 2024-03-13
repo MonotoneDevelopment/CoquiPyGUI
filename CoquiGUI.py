@@ -3,8 +3,8 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
+from playsound import playsound
 import os
-import playsound
 
 # Sythesize text to speech with CoquiTTS.
 def synthesize():
