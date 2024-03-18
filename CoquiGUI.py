@@ -5,9 +5,13 @@ from tkinter import ttk
 from tkinter import filedialog
 from tkinter import simpledialog
 from playsound import playsound
+from configparser import ConfigParser
 import os
 
+cfg = ConfigParser()
 app_directory = os.path.dirname(__file__)
+
+cfg.read('%s/config.ini'%(app_directory))
 
 # Sythesize text to speech with CoquiTTS.
 def synthesize():
@@ -17,9 +21,9 @@ def synthesize():
     if file_name == 'None' or file_name == None:
         return "Error: No file name"
     text_tts = text_entry.get(1.0, "end-1c")
-    model_name = None # Will add later
+    model_name = cfg.get('MAIN', 'modelName')
     model_default = 'tts_models/en/jenny/jenny'
-    cmd = 'tts --text "%s" --model_name "%s" --out_path %s/%s.wav'%(text_tts, model_default, file_path, file_name)
+    cmd = 'tts --text "%s" --model_name "%s" --out_path %s/%s.wav'%(text_tts, model_name, file_path, file_name)
     os.system('echo "Running CoquiTTS!"')
     os.system('echo '+cmd)
     os.system(cmd)
