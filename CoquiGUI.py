@@ -3,6 +3,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
+from tkinter import simpledialog
 from playsound import playsound
 import os
 
@@ -12,7 +13,9 @@ app_directory = os.path.dirname(__file__)
 def synthesize():
     playsound('%s/Sounds/minecraft-click-cropped.mp3'%(app_directory))
     file_path = filedialog.askdirectory()
-    file_name = "default"
+    file_name = simpledialog.askstring('Name File', 'Input a name for the file')
+    if file_name == 'None' or file_name == None:
+        return "Error: No file name"
     text_tts = text_entry.get(1.0, "end-1c")
     model_name = None # Will add later
     model_default = 'tts_models/en/jenny/jenny'
