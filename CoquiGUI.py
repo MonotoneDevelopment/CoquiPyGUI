@@ -1,7 +1,7 @@
 # Python GUI program for CoquiTTS
 
 from tkinter import *
-from tkinter import ttk
+from tkinter.ttk import *
 from tkinter import filedialog
 from tkinter import simpledialog
 from playsound import playsound
