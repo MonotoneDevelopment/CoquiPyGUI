@@ -1,25 +1,20 @@
-This is the README text file that explains to you how to do things.
+CoquiPyGUI
+Tkinter/Python GUI for the CoquiTTS tool.
 
-First, you just have to type in some text that you want to be synthesized.
+A graphical frontend for the Coqui Text to Speech synthesizer, which is usually accessed on the command line.
 
-Next, click the Synthesize button.
+This depends on TTS and Playsound, which can be installed using these commands:
 
-The program will prompt you to select a location where the audio file will go.
+[pip3 install TTS]
+[pip3 install playsound]
 
-Then, name the file whatever you want it to be called.
+Note: You may need to run the program via the command line, using python3 /location/of/program.py, or else it won't synthesize.
+Installing TTS will automatically install all of its dependencies, which is about 1.7GB, and when you first press "Synthesize",
+it will download the default mode I have preset, which is another 1.6GB.
 
-Once you press "OK", it will start synthesizing. Depending on how powerful your computer is and how long the text prompt was, it may take quite a while.
+To change the model, go into the config.ini file and change it. ( I do not have a GUI implenentation yet, I am working on it tho ).
 
-There will be an audio que telling you when it's done synthesizing.
-
----OTHER STUFF---
-
-When you first run the program, it will install the first TTS model, which will take up approximately 1.6 gigabytes of storage. Other TTS models will be similar or larger in size.
-
-The default voice built into the config is Jenny, or 'tts_models/en/jenny/jenny'.
-
-To change this, you need to open config.ini and change the modelName variable to the one you want to use.
-It has to be one of these models (you can copy and paste from this for easy access):
+Change the model to one of these: (You can copy and paste)
 
 1: tts_models/multilingual/multi-dataset/xtts_v2
 2: tts_models/multilingual/multi-dataset/xtts_v1.1
