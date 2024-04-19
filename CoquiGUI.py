@@ -8,6 +8,9 @@ from playsound import playsound
 from configparser import ConfigParser
 import os
 
+def bugExit(code):
+    return 1, code
+
 cfg = ConfigParser()
 app_directory = os.path.dirname(__file__)
 
@@ -15,7 +18,7 @@ cfg.read('%s/config.ini'%(app_directory))
 
 # Sythesize text to speech with CoquiTTS.
 def synthesize():
-    playsound('%s/Sounds/minecraft-click-cropped.mp3'%(app_directory))
+    playsound('%s/Sounds/MyClick.wav'%(app_directory))
     file_path = filedialog.askdirectory()
     file_name = simpledialog.askstring('Name File', 'Input a name for the file')
     if file_name == 'None' or file_name == None:
