@@ -1,7 +1,7 @@
 # Python GUI program for CoquiTTS
 
 from tkinter import *
-from tkinter.ttk import *
+from tkinter import ttk
 from tkinter import filedialog
 from tkinter import simpledialog
 from playsound import playsound
@@ -25,7 +25,6 @@ def synthesize():
         return "Error: No file name"
     text_tts = text_entry.get(1.0, "end-1c")
     model_name = cfg.get('MAIN', 'modelName')
-    model_default = 'tts_models/en/jenny/jenny'
     cmd = 'tts --text "%s" --model_name "%s" --out_path %s/%s.wav'%(text_tts, model_name, file_path, file_name)
     os.system('echo "Running CoquiTTS!"')
     os.system('echo '+cmd)
@@ -35,7 +34,11 @@ def synthesize():
 
 # App settings.
 def settings_screen():
-    global file_name
+
+    def apply_settings():
+        current_voice = voice_settings.get()
+        cfg.set('MAIN','modelName','%s'%(current_voice))
+        pass
 
     settings_window = Toplevel()
     settings_window.geometry("400x500")
@@ -46,11 +49,16 @@ def settings_screen():
     settings_label.pack()
     settings_about = Label(settings_window, text="Currently a work in progress")
     settings_about.pack(pady = 10)
-    pass
 
-# Will allow you to choose voice. Default is Jenny.
-def choose_voice():
-    # To be written
+    voice_settings = ttk.Combobox(
+        settings_window,
+        state="readonly",
+        values=["tts_models/en/jenny/jenny","tts_models/en/ljspeech/glow-tts","tts_models/en/ljspeech/tacotron2-DDC_ph","tts_models/en/ljspeech/fast_pitch"]
+    )
+    voice_settings.pack(pady=5)
+
+    apply_button = Button(settings_window, text="Apply Settings", command= apply_settings)
+    apply_button.pack()
     pass
 
 # The About Screen.

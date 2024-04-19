@@ -1,0 +1,13 @@
+#!/bin/bash
+echo 'This will automagially install dependencies on Unix-based systems.'
+echo 'Continue? (Y/N)'
+read -p ">: " -n 1 -r
+if [[ $REPLY =~ ^[yY]$ ]]; then
+  echo
+  echo 'Installing!'
+  pip3 install TTS
+  pip3 install playsound
+elif [[ $REPLY =~ ^[nN]$ ]]; then
+  echo 'Not Installing dependencies, exiting...'
+  exit
+fi
